@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">CovidTacker</string>
+
+    <string-array name="numbers">
+        <item>NWT</item>
+        <item>NL</item>
+        <item>Alberta</item>
+        <item>BC</item>
+        <item>Manitoba</item>
+        <item>New Brunswick</item>
+        <item>Nova Scotia</item>
+        <item>Ontario</item>
+        <item>Quebec</item>
+        <item>Saskatchewan</item>
+        <item>Yukon</item>
+        <item>PEI</item>
+        <item>Nunavut</item>
+
+    </string-array>
+</resources>
