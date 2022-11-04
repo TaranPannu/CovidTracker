@@ -88,13 +88,13 @@ String s="";
                         //   tv.append(response+"");
 
                         try {
-                            JSONArray jsonArray = response.getJSONArray("summary");
+                            JSONArray jsonArray = response.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject employee = jsonArray.getJSONObject(i);
-                                String firstName = employee.getString("province");
+                                String firstName = employee.getString("region");
                                 if(text.equals(firstName)) {
-                                    s= employee.getString("province") +','+employee.getString("date")+ ',' + employee.getString("cases") +
-                                            ','+ employee.getString("cumulative_deaths");
+                                    s= employee.getString("region") +','+employee.getString("date")+ ',' + employee.getString("cases") +
+                                            ','+ employee.getString("deaths");
 //tv.setText(s);
                                 openActivity2(s);
                                 }}
@@ -123,10 +123,10 @@ String s="";
         startActivity(intent);
     }
   private void jsonparse(){
-
       String url = "https://api.opencovid.ca/summary";
       // tv.append("9inside9");
-
+      count2=0;
+      count1=0;
       JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
               new Response.Listener<JSONObject>() {
                   @Override
@@ -134,16 +134,16 @@ String s="";
                       //   tv.append(response+"");
 
                       try {
-                          JSONArray jsonArray = response.getJSONArray("summary");
+                          JSONArray jsonArray = response.getJSONArray("data");
                           for (int i = 0; i < jsonArray.length(); i++) {
                               JSONObject employee = jsonArray.getJSONObject(i);
                               //String count=employee.getString("active_cases_change");
                              count += employee.getInt("cases");
-                            count1+=employee.getInt("deaths");
-                            count2+=employee.getInt("active_cases");
+                           count1+=employee.getInt("deaths");
+                           count2+=employee.getInt("cases_daily");
                             date=employee.getString("date");
                              }
-                      tv1.setText("                  Cases Reported on "+date+":: "+count);
+                      tv1.setText("                  Cases Reported till "+date+":: "+count);
                          tv2.setText("Deaths Reported: "+count1);
                           tv3.setText("Total active cases: "+count2);
                       } catch (JSONException e) {
