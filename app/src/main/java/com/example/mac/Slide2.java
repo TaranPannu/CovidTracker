@@ -37,10 +37,10 @@ tv3=findViewById(R.id.mm3);
         String text = intent.getStringExtra(MainActivity.EXTRA_TEXT);
       String m[]=text.split(",");
 tv.setText("PROVINCE: "+m[0]);
-tv1.setText("Data reported on: "+m[1]);
+tv1.setText("Data reported till: "+m[1]);
 if(m[2].charAt(0)=='-')
     m[2]='0'+"";
-tv2.setText("Cases: "+m[2]);
+tv2.setText("Total Cases: "+m[2]);
 tv3.setText("Total Deaths: "+m[3]);
     }
 }
