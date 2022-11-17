@@ -71,14 +71,16 @@ String s="";
                       count1=0;
                       count2=0;
               jsonparse();
+             // openActivity2();
           }
       });
     }
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text = parent.getItemAtPosition(position).toString();
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
         String url = "https://api.opencovid.ca/summary";
+
+
         // tv.append("9inside9");
 
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
@@ -86,18 +88,40 @@ String s="";
                     @Override
                     public void onResponse(JSONObject response) {
                         //   tv.append(response+"");
+                        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
 
                         try {
                             JSONArray jsonArray = response.getJSONArray("data");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject employee = jsonArray.getJSONObject(i);
                                 String firstName = employee.getString("region");
+                                if(firstName.equals("ON"))
+                                    firstName="Ontario";
+                                else   if(firstName.equals("AB"))
+                                    firstName="Alberta";
+                                else   if(firstName.equals("MB"))
+                                    firstName="Manitoba";
+                                else   if(firstName.equals("NB"))
+                                    firstName="New Brunswick";
+                                else if(firstName.equals("QC"))
+                                    firstName="Quebec";
+                                else if(firstName.equals("NS"))
+                                    firstName="Nova Scotia";
+                                else if(firstName.equals("SK"))
+                                    firstName="Saskatchewan";
+                                else if(firstName.equals("PE"))
+                                    firstName="PEI";
+                                else if(firstName.equals("YT"))
+                                    firstName="Yukon";
                                 if(text.equals(firstName)) {
                                     s= employee.getString("region") +','+employee.getString("date")+ ',' + employee.getString("cases") +
                                             ','+ employee.getString("deaths");
 //tv.setText(s);
-                                openActivity2(s);
+
+                                    openActivity2(s);
+
                                 }}
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

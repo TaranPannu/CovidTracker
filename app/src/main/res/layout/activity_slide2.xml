@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/ic_covid_back1_background"
+
     tools:context=".Slide2">
     <TextView
         android:id="@+id/mm"
         android:layout_width="wrap_content"
         android:text="State: NL"
         android:textStyle="bold|italic"
-        android:textColor="@color/green"
+        android:textColor="@color/black"
         android:padding="10dp"
+        android:textSize="20sp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -22,6 +25,9 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Data reported on:"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
         android:textColor="@color/black"
         android:padding="5dp"
       app:layout_constraintTop_toBottomOf="@id/mm"
@@ -30,7 +36,10 @@
     android:layout_marginTop="50dp"/>
     <TextView
     android:id="@+id/mm2"
-    android:layout_width="wrap_content"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
+        android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="Cases:"
         android:padding="5dp"
@@ -40,6 +49,9 @@ app:layout_constraintTop_toBottomOf="@id/mm1"    app:layout_constraintLeft_toLef
     android:layout_marginTop="50dp"/>
     <TextView
         android:id="@+id/mm3"
+        android:textSize="20sp"
+        android:textStyle="bold"
+
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Deaths:"
